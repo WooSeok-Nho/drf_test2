@@ -22,11 +22,12 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-        
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+        token['token_message'] = 'sparta_time_attack'
         token['email'] = user.email
 
 
